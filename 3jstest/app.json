@@ -1,0 +1,183 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"vr": true
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.5,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "180304A2-4A81-4B6F-87E5-A2411A42B9AD",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"castShadow": true,
+			"frustumCulled": false,
+			"layers": 1,
+			"matrix": [0.999802,0,0.019891,0,0.014462,0.686544,-0.726944,0,-0.013656,0.727088,0.686408,0,2.055712,18.921162,16.273251,1],
+			"fov": 78.06,
+			"zoom": 1,
+			"near": 0.01,
+			"far": 36.38,
+			"focus": 10,
+			"aspect": 1.597633,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.5,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "C65AF9ED-6B7F-4BDE-8E7F-84553FF1E2C1",
+				"type": "BoxBufferGeometry",
+				"width": 5.22,
+				"height": 1.72,
+				"depth": 1,
+				"widthSegments": 1,
+				"heightSegments": 1,
+				"depthSegments": 1
+			},
+			{
+				"uuid": "EC0FFA22-8841-4483-A536-A37A4313ED3C",
+				"type": "LatheBufferGeometry",
+				"points": [
+					{
+						"x": 0,
+						"y": 0
+					},
+					{
+						"x": 0.4,
+						"y": 0
+					},
+					{
+						"x": 0.35,
+						"y": 0.05
+					},
+					{
+						"x": 0.1,
+						"y": 0.075
+					},
+					{
+						"x": 0.08,
+						"y": 0.1
+					},
+					{
+						"x": 0.08,
+						"y": 0.4
+					},
+					{
+						"x": 0.1,
+						"y": 0.42
+					},
+					{
+						"x": 0.14,
+						"y": 0.48
+					},
+					{
+						"x": 0.2,
+						"y": 0.5
+					},
+					{
+						"x": 0.25,
+						"y": 0.54
+					},
+					{
+						"x": 0.3,
+						"y": 1.2
+					}],
+				"segments": 12,
+				"phiStart": 0,
+				"phiLength": 6.283185
+			}],
+		"materials": [
+			{
+				"uuid": "071AEB54-7F21-45D9-A659-6565A1AB76C9",
+				"type": "MeshToonMaterial",
+				"color": 13357619,
+				"emissive": 12627448,
+				"specular": 1118481,
+				"shininess": 32.6,
+				"flatShading": true,
+				"side": 2,
+				"depthFunc": 3,
+				"depthTest": true,
+				"depthWrite": true,
+				"alphaTest": 1
+			},
+			{
+				"uuid": "A6620038-1AC0-439B-B44E-3FD975AD3EEC",
+				"type": "MeshStandardMaterial",
+				"color": 16777215,
+				"roughness": 0.5,
+				"metalness": 0.5,
+				"emissive": 0,
+				"side": 2,
+				"depthFunc": 3,
+				"depthTest": true,
+				"depthWrite": true
+			}],
+		"object": {
+			"uuid": "CD360273-C5F9-40B8-A499-8AAFC5522017",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [2.32,0,0,0,0,2.32,0,0,0,0,2.32,0,0.78,1.1,0,1],
+			"children": [
+				{
+					"uuid": "8B82DF55-B0A0-4665-93FF-BE54E47D6E77",
+					"type": "Mesh",
+					"name": "Box",
+					"layers": 1,
+					"matrix": [1.962429,0,0,0,0,4.094545,0,0,0,0,2.910269,0,0,1.683478,-8.999225,1],
+					"geometry": "C65AF9ED-6B7F-4BDE-8E7F-84553FF1E2C1",
+					"material": "071AEB54-7F21-45D9-A659-6565A1AB76C9",
+					"children": [
+						{
+							"uuid": "771DE9F8-7532-403B-83E3-8CFCFF6BE884",
+							"type": "DirectionalLight",
+							"name": "DirectionalLight",
+							"layers": 1,
+							"matrix": [0.101994,0.071113,0.99224,0,0.951513,0.28401,-0.118162,0,-0.290209,0.956181,-0.038698,0,8.026864,1.992256,9.491453,1],
+							"color": 16777215,
+							"intensity": 0.2,
+							"shadow": {
+								"radius": 7.06,
+								"camera": {
+									"uuid": "087509BF-E92F-44D6-BF76-C7A420BC72D3",
+									"type": "OrthographicCamera",
+									"layers": 1,
+									"zoom": 1,
+									"left": -5,
+									"right": 5,
+									"top": 5,
+									"bottom": -5,
+									"near": 0.5,
+									"far": 500
+								}
+							}
+						}]
+				},
+				{
+					"uuid": "95D0818F-4EF9-4AE9-9A19-53CE9ADB78CB",
+					"type": "Mesh",
+					"name": "Lathe",
+					"layers": 1,
+					"matrix": [3.917316,0,0,0,0,3.917316,0,0,0,0,3.917316,0,10.612538,0,0,1],
+					"geometry": "EC0FFA22-8841-4483-A536-A37A4313ED3C",
+					"material": "A6620038-1AC0-439B-B44E-3FD975AD3EEC"
+				}],
+			"background": 10404115
+		}
+	},
+	"scripts": {}
+}
