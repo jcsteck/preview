@@ -1,0 +1,13 @@
+{
+"companyName": "DefaultCompany",
+"productName": "water poly",
+"dataUrl": "webvr5.data.unityweb",
+"wasmCodeUrl": "webvr5.wasm.code.unityweb",
+"wasmFrameworkUrl": "webvr5.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "webvr5.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF"
+}
