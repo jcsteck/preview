@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+    // This is the service worker with the Cache-first network
+
+// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+// Check compatibility for the browser we're running this in
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("[PWA Builder] active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("pwabuilder-sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+
+    </script>
+    
+       
+    <title>Portfólio</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="/script.js" defer></script>
+    <script> 
+    let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
+
+async function install() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    console.log(deferredPrompt)
+    deferredPrompt.userChoice.then(function(choiceResult){
+
+      if (choiceResult.outcome === 'accepted') {
+      console.log('Your PWA has been installed');
+    } else {
+      console.log('User chose to not install your PWA');
+    }
+
+    deferredPrompt = null;
+
+    });
+
+ 
+  }
+}
+    </script>l
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<a class="navbar-brand" href="#"> 
+      </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" style = "margin: 0 ; padding: 0">
+    <ul class="navbar-nav">
+      <a href = "https://supergeeks.com.br/" style = "width: 10%;"><img src="https://cdn.glitch.com/15be23ef-6d82-4d30-bc7e-cd76fe276506%2Fsla.png" style = "width: 100%; height: 100%; padding: 0; margin: 0"></a>
+      <li class="nav-item active" style = "margin: 0.5% 2.5%">
+        <a class="nav-link" href="#">Início <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" style = "margin: 0.5% 2.5%">
+        <a class="nav-link" href="/Page2.html">Meus Projetos e TCCs</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+  </head>  
+  <body style = "background-image: url(https://cdn.glitch.com/15be23ef-6d82-4d30-bc7e-cd76fe276506%2F9d632909dd2c1ea44ef1c9acc4925c09-700.jpg)">
+    <div style="margin-left: 10%; margin-right: 10%; border: 2px solid #fff; background-color: #fff">
+      <br><br><br><h3 style = "background: #343a40; padding: 1%; color: white">Sobre Mim:</h3><br>
+      <img src="https://cdn.glitch.com/15be23ef-6d82-4d30-bc7e-cd76fe276506%2F05bcd75f-a08b-45eb-bc65-8642d179bc80.jpg" style="position: absolute; width:22% ; margin: 0 7px; height: 35%; border: 2px solid purple">
+      <div style="margin-left: 30%; margin-right: 2.5%">
+        <div class="overflow-hidden" style = "border: 2px solid black; padding: 5px; border-radius: 5px; background-color: #ddd"><b>Meu nome é Juan Camargo, nasci na cidade de Campinas e estou no terceiro ano do Ensino Médio no Colégio Dom, tenho 17 anos, gosto de esportes, principalmente skate.<br><hr><br>Tenho uma enorme paixão por Programação e Desenvolvimento de Software. Sou aluno da 6ª Fase na <u>SuperGeeks Sorocaba</u>.
+         Quero estudar Ciência da Computação na UNICAMP, porém, sonho cursar em Harvard. Participo e desenvolvo projetos extracurriculares, como o DAMUN e Hands-On. <br><hr><br>Pretendo morar na cidade de Toronto, Ontario. Amo línguas, falo inglês desde os 12 anos, estou aprendendo francês. Divido meu tempo entre os estudos, skate, games e a minha igreja.<hr>  
+          </b></div>
+      </div>
+      <div style="margin: 0; background-color: #fff">
+      <br><br><br><h3 style = "background: #343a40; padding: 1%; color: white">Minhas Habilidades:</h3><br>
+      <img src="https://cdn.glitch.com/15be23ef-6d82-4d30-bc7e-cd76fe276506%2Fc18dd184450f6a97214c3d533e9ea4d2dd735c89.webp" style="position: absolute; width: 27% ; margin: 0 52.5%; border: 2px solid purple">
+      <div style="margin-left: 2.5%; margin-right: 37%">
+        <div class="overflow-hidden" style = "border: 2px solid black; padding: 5px; border-radius: 5px; background-color: #ddd"><b>Como disse anteriormente, a programação é uma grande parte da minha vida. Minhas linguagens preferidas são, respectivamente:<ul>
+          <li>Python</li>
+          <li>Javascript</li>
+          <li>C++</li>
+          <li>C#</li>
+          <li>PHP</li>
+          </ul>
+          <hr>
+          Além disso, em minha opinião, as melhores Engines que uso neste momento são:
+          <ul>
+            <li>Unity</li>
+            <li>Unreal Engine 4 (UE4)</li>
+          </ul>
+          </b></div></div>
+        <div style="margin: 0; background-color: #fff">
+      <br><br><br><h3 style = "background: #343a40; padding: 1%; color: white">Contato:</h3><br>
+      <div style="margin-left: 1.5%; width: 97%; margin-right: 1.5%">
+        <div class="overflow-hidden" style = "border: 2px solid black; padding: 5px; border-radius: 5px; background-color: #ddd"><b><li>E-mail: <u>juanjnow@gmail.com</u></li><br><li>Meu Instagram Pessoal:<a href = "https://www.instagram.com/jauamzin/?hl=pt-br"><img src= "https://cdn.glitch.com/15be23ef-6d82-4d30-bc7e-cd76fe276506%2Faaa.png" style = "width: 4%; padding: 5px; margin-left: 2px"></a></li><br><li>Site da SuperGeeks:<a href = "https://supergeeks.com.br/">       https://supergeeks.com.br/</a></li></b></div>
+        
+
+          </div>
+    </div>
+    </div>
+    </div>
+    <div> <button onclick="install()">
+  Install
+      </button> </div>
+      
+      
+      
+    
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
