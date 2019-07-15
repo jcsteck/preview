@@ -1,0 +1,1 @@
+"use strict";!function(a){a(window).on("scroll",function(){var n=a(".navbar");n.length&&(n.offset().top>50?a(".scrolling-navbar").addClass("top-nav-collapse"):a(".scrolling-navbar").removeClass("top-nav-collapse"))})}(jQuery);
