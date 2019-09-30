@@ -1,0 +1,35 @@
+a-scene {
+  height: inherit;
+  width: inherit;
+}
+
+.text-center.text-white.d-none.d-lg-block.order-3.site-heading {
+  z-index: 0;
+}
+
+#myEmbeddedScene {
+  /*z-index: 1;*/
+  margin: 0px 0px 0px 0px;
+}
+
+a-scene {
+  height: 300px;
+  width: 300px;
+}
+
+#myEmbeddedScene {
+  position: absolute;
+  z-index: 2;
+}
+
+#mainNav {
+  position: sticky;
+}
+
+a-scene {
+  position: relative;
+  z-index: 2;
+  width: 1080px;
+  height: 1080px;
+}
+

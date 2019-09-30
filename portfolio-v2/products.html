@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Products - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+ <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+      <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
+      <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script> 
+      <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"> </script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.3.1/dist/aframe-layout-component.min.js"></script> 
+
+  <script src="https://rawgit.com//master/dist/aframe-viewable-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script> 
+    <script>
+    AFRAME.registerComponent('foo', {
+  tick: function () {
+    lookCube.setAttribute('position', mainCam.getObject3D('camera').position);
+  }
+});
+  </script>
+</head>
+
+<body style="background:linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('assets/img/bg.jpg');">
+    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">A Free Bootstrap 4 Business Theme&nbsp;</span><span class="site-heading-lower">Business Casual</span></h1>
+    <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-dark d-flex justify-content-xl-center align-items-xl-center py-lg-4"
+        id="mainNav" style="padding: 0px 0px;font-size: 20;opacity: 1;color: rgba(255,255,255,0);background: transparent;">
+        <div class="container-fluid"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#" style="background: transparent;">Brand</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive" style="color: #000000;">
+                <ul class="nav navbar-nav mx-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">About us</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="products.html">Products</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Store</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="d-flex product-item-title">
+                    <div class="d-flex mr-auto bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-0"><span class="section-heading-upper">Blended to Perfection</span><span class="section-heading-lower">Coffees &amp; Teas</span></h2>
+                    </div>
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/products-01.jpg">
+                <div class="bg-faded p-5 rounded">
+                    <p class="mb-0">We take pride in our work, and it shows. Every time you order a beverage from us, we guarantee that it will be an experience worth having. Whether it's our world famous Venezuelan Cappuccino, a refreshing iced herbal tea, or something
+                        as simple as a cup of speciality sourced black coffee, you will be coming back for more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="d-flex product-item-title">
+                    <div class="d-flex ml-auto bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-0"><span class="section-heading-upper">Delicious Treats, Good Eats</span><span class="section-heading-lower">Bakery &amp; Kitchen</span></h2>
+                    </div>
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/products-02.jpg">
+                <div class="bg-faded p-5 rounded">
+                    <p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="d-flex product-item-title">
+                    <div class="d-flex mx-auto bg-faded p-5 rounded">
+                        <h2 class="section-heading mb-0"><span class="section-heading-upper">From Around the World</span><span class="section-heading-lower">Bulk Speciality Blends</span></h2>
+                    </div>
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/products-03.jpg">
+                <div class="bg-faded p-5 rounded">
+                    <p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you visit us, you'll always find new blends from around the world, mainly from regions in Central and South America. We sell our blends in smaller
+                        to large bulk quantities. Please visit us in person for more details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer text-faded text-center py-5" style="background-color: rgba(0,0,0,0.9);">
+        <div class="container">
+            <p class="m-0 small">Copyright&nbsp;©&nbsp;Brand 2018</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/current-day.js"></script>
+</body>
+
+</html>
