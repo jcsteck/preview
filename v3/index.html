@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="text-nowrap">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar---Apple-1.css">
+    <link rel="stylesheet" href="assets/css/Navbar---Apple.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+ <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+      <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
+      <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script> 
+      <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> 
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"> </script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.3.1/dist/aframe-layout-component.min.js"></script> 
+
+  <script src="https://rawgit.com//master/dist/aframe-viewable-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.0.0/dist/aframe-orbit-controls.min.js"></script> 
+    <script>
+    AFRAME.registerComponent('foo', {
+  tick: function () {
+    lookCube.setAttribute('position', mainCam.getObject3D('camera').position);
+  }
+});
+  </script>
+</head>
+
+<body style="/*background: transparent;*//*background-size: auto;*/background-image: url(&quot; &quot;);">
+    <h1 class="text-center text-white d-none d-lg-block order-3 site-heading"></h1>
+    <div>
+        <div class="container text-nowrap d-inline d-xl-flex flex-grow-1 justify-content-xl-center align-items-xl-center" style="height: 600px;max-height: 100%;min-height: 75%;min-width: 75%;max-width: 100%;">
+            <div class="row text-nowrap text-center d-xl-flex justify-content-xl-center align-items-xl-center" style="position: fixed;width: 100%;height: 100%;z-index: 4;">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 100%;z-index: 4;"> <a-scene embedded foo cursor="rayOrigin:mouse">
+      <a-assets>
+        <a-asset-item id="face" src="https://cdn.glitch.com/275d8aac-d9a1-42cc-875f-8c012ac804dd%2Fjc2.glb"></a-asset-item>
+        <a-asset-item id="video" src="https://cdn.glitch.com/275d8aac-d9a1-42cc-875f-8c012ac804dd%2Fvideo.glb"></a-asset-item>
+             <a-asset-item id="vr" src=" https://cdn.glitch.com/84ed0fc2-30ba-440e-9e73-a3785ef2fda3%2Fcardboard.glb"></a-asset-item>
+                     <a-asset-item id="camera" src="https://cdn.glitch.com/84ed0fc2-30ba-440e-9e73-a3785ef2fda3%2Fcamera.glb"></a-asset-item>
+
+      </a-assets>
+    
+      
+            <a-entity id="mainCam" camera look-controls="enabled:true" orbit-controls="enableZoom:false; rotationA: 1;rotationB: 1;dampingFactor:0.02;initialPosition: 0 0 0; autoRotate: true; autoRotateSpeed: 0.05; enableKeys: false; enablePan: true; 
+                                                   minAzimuthAngle: 5; 
+                                                   maxAzimuthAngle: 5; 
+                                                   maxDistance: 5; 
+                                                   maxPolarAngle: 82; 
+                                                   minDistance: 5; 
+                                                   minPolarAngle: 98; 
+                                                   minZoom: 10; 
+                                                   screenSpacePanning: false; 
+                                                   target: 0 0 0">
+       
+       
+       
+          <a-box width="1" height="1" depth="1" color="blue"></a-box>
+              
+ </a-entity>
+      <a-entity id="lookCube"></a-entity>                          
+
+  
+       <a-entity id="icons" position="0 0 0" rotation="0 0 0"
+                  >
+         
+         
+     
+          
+        
+         
+      <a-entity layout="type: circle; radius: 3; plane: xz" scale="2 2 2" >
+ <a-entity id="videocam-model" scale="2 2 2" look-at="#lookCube"
+           animation__hoveron="property: scale; from:2 2 2; to:2.5 2.5 2.5; startEvents:mouseenter; dur:500"
+           animation__hoveroff="property: scale; to:2 2 2; from:2.5 2.5 2.5; startEvents:mouseleave; dur:500">
+   <a-entity id="video3d" gltf-model="#video"
+                visible="true" 
+                position="0 -1 0"
+                rotation="180 0 180"
+             scale="0.5 0.5 0.5"
+               shadow> 
+   </a-entity>
+   </a-entity>
+        <a-entity id="vr-model" scale="2 2 2" look-at="#lookCube"
+           animation__hoveron="property: scale; from:2 2 2; to:2.5 2.5 2.5; startEvents:mouseenter; dur:500"
+           animation__hoveroff="property: scale; to:2 2 2; from:2.5 2.5 2.5; startEvents:mouseleave; dur:500">
+   <a-entity id="vr-poly" gltf-model="#vr"
+                visible="true" 
+                position="0 -0.4 0"
+                rotation="180 0 180"
+             scale="0.05 0.05 0.05"
+               shadow> 
+   </a-entity>
+   </a-entity>
+         <a-entity id="camera-model" scale="2 2 2" look-at="#lookCube"
+           animation__hoveron="property: scale; from:2 2 2; to:2.5 2.5 2.5; startEvents:mouseenter; dur:500"
+           animation__hoveroff="property: scale; to:2 2 2; from:2.5 2.5 2.5; startEvents:mouseleave; dur:500">
+   <a-entity id="camera-poly" gltf-model="#camera"
+                visible="true" 
+                position="1.3 -3.5 0"
+                rotation="180 180 180"
+             scale="2 2 2"
+               shadow> 
+   </a-entity>
+   </a-entity>
+        <a-entity geometry="primitive: box" material look-at="#lookCube"></a-entity>
+      
+     
+      <a-entity geometry="primitive: box" material look-at="#lookCube"></a-entity>
+    </a-entity>
+   
+  
+      <a-entity id="static" look-at="#lookCube" position="0 0 0.1">
+    <a-entity geometry="primitive:triangle" position="4 0 0" rotation="0 90 90" scale="1 1 1" material="side:double; shader:flat; color:grey"
+                         animation__hoveron="property: components.material.material.color; type:color; from:grey; to:black; startEvents:mouseenter; dur:500"
+                                       animation__hoveroff="property: components.material.material.color; type:color; from:black; to:grey; startEvents:mouseenter; dur:500"
+
+> </a-entity>
+       
+        
+      
+       <a-entity look-at="#lookCube" position="3 0 0" rotation="-90 90 90" link="href:https://bronze-mallow.glitch.me/; title:mylink;image:#linkTnail"></a-entity>
+       </a-entity>
+      </a-entity>
+    </a-scene></div>
+            </div>
+            <div class="row text-center d-xl-flex flex-nowrap justify-content-xl-center align-items-xl-center" style="position: fixed;width: 100%;z-index: 2;height: 100%;">
+                <div class="col-auto col-md-6 text-nowrap d-flex d-sm-flex d-xl-flex justify-content-start justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center align-items-xl-center" style="width: 30%;height: 100%;/*z-index: 4;*/"><a class="text-center d-flex d-sm-flex d-lg-flex d-xl-flex justify-content-end align-items-center justify-content-sm-start align-items-sm-center justify-content-md-center justify-content-lg-center align-items-lg-center justify-content-xl-start align-items-xl-center"
+                        href="#" style="color: rgb(0,0,0);width: 50%;height: 100%;/*z-index: 4;*/"><i class="fa fa-arrow-left d-flex d-sm-flex d-lg-flex d-xl-flex flex-grow-0 justify-content-end justify-content-sm-start justify-content-lg-end align-items-lg-center justify-content-xl-center align-items-xl-center" data-bs-hover-animate="pulse" style="width: 20%;height: auto;max-height: 1920px;max-width: 100%;min-height: auto;font-size: 300%;position: relative;z-index: 4;line-height: 100%;"></i></a></div>
+                <div
+                    class="col-auto col-md-6 text-nowrap d-flex d-sm-flex d-xl-flex flex-grow-1 flex-shrink-1 justify-content-center align-items-center justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center align-items-xl-center"
+                    style="width: 20%;height: 100%;"></div>
+            <div class="col-auto col-md-6 text-nowrap d-flex d-sm-flex d-xl-flex justify-content-end justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-xl-center align-items-xl-center" style="width: 30%;height: 100%;"><a class="text-center d-flex d-sm-flex d-lg-flex d-xl-flex justify-content-end align-items-center justify-content-sm-end align-items-sm-center justify-content-md-center justify-content-lg-center align-items-lg-center justify-content-xl-end align-items-xl-center"
+                    href="#" style="color: rgb(0,0,0);width: 50%;height: 100%;"><i class="fa fa-arrow-right d-flex d-sm-flex d-lg-flex d-xl-flex flex-grow-0 justify-content-end justify-content-lg-end align-items-lg-center justify-content-xl-center align-items-xl-center" data-bs-hover-animate="pulse" style="width: 20%;height: auto;max-height: 1920px;max-width: 100%;min-height: auto;font-size: 300%;position: relative;z-index: 4;line-height: 100%;"></i></a></div>
+        </div>
+        <div class="row text-nowrap text-center d-xl-flex justify-content-xl-center align-items-xl-end" style="position: absolute;width: 100%;height: 100%;">
+            <div class="col d-xl-flex align-items-xl-end">
+                <nav class="navbar navbar-light navbar-expand-md text-center d-xl-flex justify-content-xl-center align-items-xl-center" style="width: 100%;">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse d-xl-flex justify-content-xl-center" id="navcol-1">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/current-day.js"></script>
+    <script src="assets/js/Navbar---Apple.js"></script>
+</body>
+
+</html>
