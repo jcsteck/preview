@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Post-Production Suites Tour - Spang TV</title>
+    <meta name="description" content="Spang TV Post-production Suites">
+    <meta name="author" content="Spang TV">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('hotspots',{
+        init:function(){
+            this.el.addEventListener('reloadspots',function(evt){
+
+            //get the entire current spot group and scale it to 0
+            var currspotgroup=document.getElementById(evt.detail.currspots);
+            currspotgroup.setAttribute("scale","0 0 0");
+
+            //get the entire new spot group and scale it to 1
+            var newspotgroup=document.getElementById(evt.detail.newspots);
+            newspotgroup.setAttribute("scale","1 1 1");
+          });
+        }
+      });
+      AFRAME.registerComponent('spot',{
+        schema:{
+          linkto:{type:"string",default:""},
+          spotgroup:{type:"string",default:""}
+        },
+        init:function(){
+
+          //add image source of hotspot icon
+          this.el.setAttribute("src","#hotspot");
+          //make the icon look at the camera all the time
+
+
+
+          var data=this.data;
+
+          this.el.addEventListener('click',function(){
+            //set the skybox source to the new image as per the spot
+            var sky=document.getElementById("skybox");
+            sky.setAttribute("src",data.linkto);
+
+            var spotcomp=document.getElementById("spots");
+            var currspots=this.parentElement.getAttribute("id");
+            //create event for spots component to change the spots data
+            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+          });
+        }
+      });
+    </script>
+    <style>
+      #preloader-modal {
+        color:red;
+      }
+    </style>
+      <link rel="stylesheet" href="https://cdn.rawgit.com/thomaspark/bootswatch/gh-pages/slate/bootstrap.min.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/gladeye/aframe-preloader-component/1.0.2/dist/aframe-preloader-component.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene preloader="autoInject: false; clickToClose: true; autoClose: true; target: #preloader-modal; bar: #preloader-modal .progress-bar; label: #preloader-modal .progress-label; labelText: Loading {0}%; slowLoad: true; doneLabelText: Press Start To Play!;" loading-screen="dotsColor: red; backgroundColor: black; enabled:false" background="color: #ECECEC" cursor="rayOrigin:mouse">
+      <a-assets>
+                  <img id="logo" src="https://cdn.glitch.com/e681d818-2d74-48a4-803c-30bc01c4eefa%2Fspang%20logo.png">
+
+       <a-asset-item id="hotspot2" src="https://cdn.glitch.com/7316d439-0e3d-48d9-bd1d-f8b84174ed10%2Farrow.glb?v=1570024296598"></a-asset-item>
+        <img id="point1" src="/public/img/entranceR.jpg" preload="true"/>
+        <img id="point2" src="/public/img/lobby.jpg" preload="true"/>
+        <img id="point3" src="/public/img/hall.jpg" preload="true"/>
+        <img id="point4" src="/public/img/suite2.jpg" preload="true"/>
+
+                <img id="point5" src="https://cdn.glitch.com/7316d439-0e3d-48d9-bd1d-f8b84174ed10%2Fhall_centered.jpg?v=1570038725801"/>
+
+
+        <img id="hotspot" src="https://cdn.glitch.com/7316d439-0e3d-48d9-bd1d-f8b84174ed10%2Farrow_forward2%402x.png?v=1570043159863" preload="true">
+      </a-assets>
+
+      <a-entity id="spots" hotspots>
+        <a-entity id="group-point1">
+          <a-light type="directional"></a-light>
+          <a-image spot="linkto:#point2;spotgroup:group-point2" position="1 0.5 -6" shadow></a-image>
+        </a-entity>
+        <a-entity id="group-point2" scale="0 0 0">
+          <a-image spot="linkto:#point5;spotgroup:group-point5" rotation="0 -90 90" position="-7 1.5 -4.5" shadow
+                                  animation__hover="property:position; from: -7 1.5 -4.5; to: -7 1.5 -4.6; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+
+          <a-image spot="linkto:#point3;spotgroup:group-point3" position="-12 1.5 1" rotation="-0 90 0"
+                      animation__hover="property:position; from: -12 1.5 1; to: -13 1.5 1; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+          <a-image spot="linkto:#point4;spotgroup:group-point4" position="-6 1.2 2.5" rotation="0 90 90"
+                   animation__hover="property:position; from: -6 1.2 2.45; to: -6 1.2 2.55; dur:1000; loop:10; startEvents:mouseenter; pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+
+
+        </a-entity>
+        <a-entity id="group-point3" scale="0 0 0">
+          <a-image spot="linkto:#point2;spotgroup:group-point2"  position="-5 1.3 3" rotation="0 -90 90" animation__hover="property:position; from: -5 1.3 3; to: -5 1.3 2.8; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"
+                                                     ></a-image>
+
+
+        </a-entity>
+        <a-entity id="group-point4" scale="0 0 0">
+          <a-image spot="linkto:#point2;spotgroup:group-point2" position="-4 1.5 -2.5" rotation="0 -90 90"
+                   animation__hover="property:position; from: -4 1.5 -2.5; to: -4 1.5 -2.7; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+        </a-entity>
+
+           <a-entity id="group-point5" scale="0 0 0">
+          <a-image spot="linkto:#point6;spotgroup:group-point6" position="-5 1 -7" rotation="0 -90 -90"></a-image>
+                       <a-image spot="linkto:#point2;spotgroup:group-point2" position="5 1 1" rotation="0 -90 -90"></a-image>
+
+        </a-entity>
+
+      </a-entity>
+
+      <a-sky id="skybox" rotation="0 0 0" src="#point1"></a-sky>
+
+     <a-entity id="rig" rotation="0 0 0">
+       <a-entity id="cam" camera position="0 1.6 0" look-controls>
+
+         <a-image link="href: https://www.spangtv.com" src="#logo" position="0 -0.73raw -1" scale="0.3 0.15 0.3" material="alpha-test:0.5">
+            </a-image>
+
+        </a-entity>
+       </a-entity>
+
+
+    </a-scene>
+  </body>
+</html>
