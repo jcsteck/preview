@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Post-Production Suites Tour - Spang TV</title>
+    <meta name="description" content="Spang TV Post-production Suites">
+    <meta name="author" content="Spang TV">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('hotspots',{
+        init:function(){
+            this.el.addEventListener('reloadspots',function(evt){
+
+            //get the entire current spot group and scale it to 0
+            var currspotgroup=document.getElementById(evt.detail.currspots);
+            currspotgroup.setAttribute("scale","0 0 0");
+
+            //get the entire new spot group and scale it to 1
+            var newspotgroup=document.getElementById(evt.detail.newspots);
+            newspotgroup.setAttribute("scale","1 1 1");
+          });
+        }
+      });
+      AFRAME.registerComponent('spot',{
+        schema:{
+          linkto:{type:"string",default:""},
+          spotgroup:{type:"string",default:""}
+        },
+        init:function(){
+
+          //add image source of hotspot icon
+          this.el.setAttribute("src","#hotspot");
+          //make the icon look at the camera all the time
+
+
+
+          var data=this.data;
+
+          this.el.addEventListener('click',function(){
+            //set the skybox source to the new image as per the spot
+            var sky=document.getElementById("skybox");
+            sky.setAttribute("src",data.linkto);
+
+            var spotcomp=document.getElementById("spots");
+            var currspots=this.parentElement.getAttribute("id");
+            //create event for spots component to change the spots data
+            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+          });
+        }
+      });
+    </script>
+    <style>
+      #preloader-modal {
+        color:red;
+      }
+    </style>
+      <link rel="stylesheet" href="https://cdn.rawgit.com/thomaspark/bootswatch/gh-pages/slate/bootstrap.min.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/gladeye/aframe-preloader-component/1.0.2/dist/aframe-preloader-component.min.js"></script>
+  <script src="/js/helper.js"></script>
+    <script src="/js/hotspot.js"></script>
+
+    <script src="js/vendor.js"></script>
+     <script src="js/bundle.js"></script>
+  </head>
+  <body>
+    <a-scene preloader="autoInject: false; clickToClose: true; autoClose: true; target: #preloader-modal; bar: #preloader-modal .progress-bar; label: #preloader-modal .progress-label; labelText: Loading {0}%; slowLoad: true; doneLabelText: Press Start To Play!;" loading-screen="dotsColor: red; backgroundColor: black; enabled:false" background="color: #ECECEC" cursor="rayOrigin:mouse">
+      <a-assets>
+                  <img id="logo" src="https://cdn.glitch.com/e681d818-2d74-48a4-803c-30bc01c4eefa%2Fspang%20logo.png">
+
+
+       <a-mixin id="hotspot-text" text="font: exo2bold; width: 5" geometry="primitive: plane; width: 1.6; height: 0.4" material="color: black;" position="0 -0.6 0"></a-mixin>
+       <a-mixin id="hotspot-target" geometry="primitive: octahedron; radius: 0.2;" material="flatShading: true; color: rgb(255, 0, 161)"></a-mixin>
+     </a-assets>
+
+     <a-tour>
+       <a-panorama id="seawall" src="/public/img/entranceR.jpg" rotation="0 140 0"></a-panorama>
+       <a-panorama id="yaletown" src="/public/img/lobby.jpg" rotation="0 120 0"></a-panorama>
+       <a-panorama id="aquabus" src="/public/img/color-suite.jpg" rotation="0 50 0"></a-panorama>
+       <a-panorama id="dock" src="/public/img/suite2.jpg" rotation="0 -90 0"></a-panorama>
+
+       <a-hotspot id="aquabus-dock" for="aquabus" to="dock" mixin="hotspot-target" position="-5.00 -0.09 0.03" rotation="-1.03 90.34 0.00">
+         <a-text value="Boat dock" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+
+       <a-hotspot id="dock-aquabus" for="dock" to="aquabus" mixin="hotspot-target" position="-4.99 -0.21 -0.24" rotation="-2.41 87.23 0.00">
+         <a-text value="Aquabus" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+
+       <a-hotspot id="dock-yaletown" for="dock" to="yaletown" mixin="hotspot-target" position="4.99 0.08 0.23" rotation="-1.26 -92.41 0">
+         <a-text value="Yaletown" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+
+       <a-hotspot id="yaletown-dock" for="yaletown" to="dock" mixin="hotspot-target" position="-4.70 -0.83 1.49" rotation="-9.51 107.62 0.00">
+         <a-text value="Boat dock" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+
+       <a-hotspot id="yaletown-seawall" for="yaletown" to="seawall" mixin="hotspot-target" position="-3.55 -0.22 -3.51" rotation="-2.52 45.29 0.00">
+         <a-text value="Seawall" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+
+       <a-hotspot id="seawall-yaletown" for="seawall" to="yaletown" mixin="hotspot-target" position="-1.40 -0.07 4.80" rotation="-0.80 163.72 0.00">
+         <a-text value="Yaletown" align="center" mixin="hotspot-text"></a-text>
+       </a-hotspot>
+     </a-tour>
+
+     <a-entity camera look-controls>
+       <a-entity cursor position="0 0 -1"
+         geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+         material="color: black; shader: flat">
+       </a-entity>
+     </a-entity>
+
+    </a-scene>
+  </body>
+</html>
