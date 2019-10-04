@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Post-Production Suites Tour - Spang TV</title>
+    <meta name="description" content="Spang TV Post-production Suites">
+    <meta name="author" content="Spang TV">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent('hotspots',{
+        init:function(){
+            this.el.addEventListener('reloadspots',function(evt){
+
+            //get the entire current spot group and scale it to 0
+            var currspotgroup=document.getElementById(evt.detail.currspots);
+            currspotgroup.setAttribute("scale","0 0 0");
+
+            //get the entire new spot group and scale it to 1
+            var newspotgroup=document.getElementById(evt.detail.newspots);
+            newspotgroup.setAttribute("scale","1 1 1");
+          });
+        }
+      });
+      AFRAME.registerComponent('spot',{
+        schema:{
+          linkto:{type:"string",default:""},
+          spotgroup:{type:"string",default:""}
+        },
+        init:function(){
+
+          //add image source of hotspot icon
+          this.el.setAttribute("src","#hotspot");
+          //make the icon look at the camera all the time
+
+
+
+          var data=this.data;
+
+          this.el.addEventListener('click',function(){
+            //set the skybox source to the new image as per the spot
+            var sky=document.getElementById("skybox");
+            sky.setAttribute("src",data.linkto);
+
+            var spotcomp=document.getElementById("spots");
+            var currspots=this.parentElement.getAttribute("id");
+            //create event for spots component to change the spots data
+            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
+          });
+        }
+      });
+    </script>
+    <style>
+      #preloader-modal {
+        color:red;
+      }
+    </style>
+      <link rel="stylesheet" href="https://cdn.rawgit.com/thomaspark/bootswatch/gh-pages/slate/bootstrap.min.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/gladeye/aframe-preloader-component/1.0.2/dist/aframe-preloader-component.min.js"></script>
+  <script src="/js/helper.js"></script>
+    <script src="/js/hotspot.js"></script>
+    <script src="/js/tour.js"></script>
+
+
+
+  </head>
+  <body>
+    <a-scene background="color: #ECECEC" cursor="rayOrigin:mouse">
+      <a-assets>
+                  <img id="logo" src="https://cdn.glitch.com/e681d818-2d74-48a4-803c-30bc01c4eefa%2Fspang%20logo.png">
+
+       <a-asset-item id="hotspot2" src="https://cdn.glitch.com/7316d439-0e3d-48d9-bd1d-f8b84174ed10%2Farrow.glb?v=1570024296598"></a-asset-item>
+        <img id="point1" src="/public/img/entranceR.jpg"/>
+        <img id="point2" src="/public/img/lobby.jpg"/>
+        <img id="point3" src="/public/img/color-suite.jpg"/>
+        <img id="point4" src="/public/img/suite2.jpg"/>
+
+                <img id="point5" src="/public/img/hall.jpg"/>
+                <img id="point6" src="/public/img/conference.jpg"/>
+
+
+        <img id="hotspot" src="/public/img/fitter-arrow.png">
+      </a-assets>
+
+      <a-entity id="spots" hotspots >
+        <a-entity id="group-point1">
+
+          <a-image material="opacity:0.9" spot="linkto:#point2;spotgroup:group-point2" position="1 0.5 -6" shadow>
+
+          </a-image>
+          <a-plane material="color:black;opacity:0.4"
+          text="value:ENTER; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="1 -0.5 -6" look-at="#cam" height="0.5" width="1.">
+          </a-plane>
+
+        </a-entity>
+        <a-entity id="group-point2" scale="0 0 0">
+          <a-image material="opacity:0.9" spot="linkto:#point5;spotgroup:group-point5" rotation="0 -90 90" position="-7 1.5 -4.5" shadow
+          animation__hover="property:position; from: -7 1.5 -4.5; to: -7 1.5 -4.6; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter">
+          </a-image>
+          <a-plane material="color:black;opacity:0.4" text="value:HALL; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="-7 0.5 -4.5" look-at="#cam" height="0.5">
+          </a-plane>
+          <a-image material="opacity:0.9" spot="linkto:#point3;spotgroup:group-point3" position="-12 1.5 1" rotation="-0 90 0"
+                      animation__hover="property:position; from: -12 1.5 1; to: -12 1.5 1; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"
+                      animation__hover2="property:rotation; from: -0 90 0; to: 45 90 00; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter">
+          </a-image>
+          <a-plane material="color:black;opacity:0.4" text="value: COLOR SUITE; width:4 ;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="-12 0.5 1" look-at="#cam" height="0.5" width="1.5">
+          </a-plane>
+          <a-image material="opacity:0.9" spot="linkto:#point4;spotgroup:group-point4" position="-6 1.5 2.5" rotation="0 90 90"
+                   animation__hover="property:position; from: -6 1.5 2.45; to: -6 1.5 2.55; dur:1000; loop:10; startEvents:mouseenter; pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+                   <a-plane material="color:black;opacity:0.4" text="value:Suite #2; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="-6 0.5 2.45" look-at="#cam" height="0.5">
+                   </a-plane>
+
+        </a-entity>
+        <a-entity id="group-point3" scale="0 0 0">
+          <a-image material="opacity:0.9" spot="linkto:#point2;spotgroup:group-point2"  position="-5 1.3 3" rotation="0 -90 90" animation__hover="property:position; from: -5 1.3 3; to: -5 1.3 2.8; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"
+                                                     ></a-image>
+                                                     <a-plane material="color:black;opacity:0.4"
+                                                     text="value:BACK TO LOBBY; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="-5 0.5 3" look-at="#cam" height="0.5" width="1.8">
+                                                     </a-plane>
+
+
+        </a-entity>
+        <a-entity id="group-point4" scale="0 0 0">
+          <a-image material="opacity:0.9" spot="linkto:#point2;spotgroup:group-point2" position="-4 1.5 -2.5" rotation="0 -90 90"
+                   animation__hover="property:position; from: -4 1.5 -2.5; to: -4 1.5 -2.7; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+                   <a-plane material="color:black;opacity:0.4"
+                   text="value:BACK TO LOBBY; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="-4 0.5 -2.5" look-at="#cam" height="0.5" width="1.8">
+                   </a-plane>
+        </a-entity>
+
+           <a-entity id="group-point5" scale="0 0 0">
+          <a-image material="opacity:0.9" spot="linkto:#point6;spotgroup:group-point6" position="-2 1 -5" rotation="-0 0 90"
+            animation__hover="property:position; from: -2 1 -5; to: -2.2 1 -5; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+          <a-plane material="color:black;opacity:0.4"
+          text="value:CONFERENCE ROOM; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" look-at="#cam" position="-2 0 -5" rotation="0 -25  0"  height="0.5" width="1.8">
+          </a-plane>
+
+
+                       <a-image material="opacity: 0.9" spot="linkto:#point2;spotgroup:group-point2" position="4.5 1 0.3" rotation="0 -59 -90"
+                         animation__hover="property:position; from: 4.5 1 0.3; to: 4.55 1 0.35; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+                       <a-plane material="color:black;opacity:0.4"
+                       text="value:BACK TO LOBBY; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="4.52735 0 0.28831" look-at="#cam" height="0.5" width="1.8">
+                       </a-plane>  </a-entity>
+
+         <a-entity id="group-point6" scale="0 0 0">
+        <a-image material="opacity:0.9" spot="linkto:#point5;spotgroup:group-point5" position="6 1 -2" rotation="0 90 -90"
+                                 animation__hover="property:position; from: 6 1 -2; to: 6 1 -2.15; dur:1000; loop:10; startEvents:mouseenter;pauseEvents:mouseleave; resumeEvents: mouseenter"></a-image>
+        <a-plane material="color:black;opacity:0.4"
+        text="value:BACK TO LOBBY; width:4;height:5;align:center;font:https://cdn.aframe.io/fonts/Roboto-msdf.json" position="6 0 -2" look-at="#cam" height="0.5" width="1.8">
+        </a-plane>
+
+
+      </a-entity>
+
+      </a-entity>
+
+      <a-sky id="skybox" rotation="0 0 0" src="#point1"  roughness="0.5" shader="flat" shadow="receive:true"></a-sky>
+
+
+
+     <a-entity id="rig" rotation="0 0 0">
+       <a-entity id="cam" camera position="0 1.6 0" look-controls>
+
+         <a-image link="href: https://www.spangtv.com" src="#logo" position="0 -0.73raw -1" scale="0.3 0.15 0.3" material="alpha-test:0.5">
+            </a-image>
+
+        </a-entity>
+       </a-entity>
+
+
+    </a-scene>
+  </body>
+</html>
